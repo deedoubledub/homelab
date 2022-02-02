@@ -42,3 +42,13 @@ Services :arrow_right: DNS Resolver
 | Host | Domain      | IP address | Description     |
 | ---- | ----------- | ---------- | --------------- |
 | kube | example.com | 10.0.0.80  | k8s control VIP |
+
+## ipxe_builder
+
+This docker image generates iPXE images for network booting.
+
+1. edit `scripts/build.sh` to modify the build process
+2. edit `scripts/embed.ipxe` to modify the embedded ipxe script / boot process
+
+Execute `generate.sh` to build the image, clone the iPXE git repo, and build
+the iPXE images in `artifacts/`.

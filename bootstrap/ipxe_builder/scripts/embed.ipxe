@@ -1,0 +1,4 @@
+#!ipxe
+
+dhcp
+chain http://nuc.deedoubledub.com:8888/boot.ipxe
