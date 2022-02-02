@@ -11,7 +11,7 @@ fi
 # run the builder with the supplied scripts
 # volumes:
 # build.sh   -- build script
-# embed.ipze -- embedded ipxe script
+# embed.ipxe -- embedded ipxe script
 # ipxe       -- ipxe git repo
 # artifacts  -- output directory
 docker run --rm \
