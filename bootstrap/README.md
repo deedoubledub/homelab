@@ -1,5 +1,7 @@
 # Bootstrap
 
+Shortcut: execute `bootstrap.sh` and add Talos configuration
+
 The infrastructure required to bootstrap the cluster.
 
 3 x Lenovo ThinkCentre M710q nodes :arrow_right: [Talos](https://www.talos.dev)
@@ -60,7 +62,7 @@ HTTP server to host the iPXE and Talos resources.
 
 - edit `setup.sh` to configure the version of Talos to fetch
 - edit `config/http/boot.ipxe` to modify the boot sequence
-- edit `config/http/talos/controlplane.yaml` to modify the Talos configuration
+- add `config/http/talos/controlplane.yaml` for Talos configuration
 
 Execute `setup.sh` to build the TFTP image, copy the boot images into place,
 download the Talos kernel and initrd, and start the compose stack to serve it.
