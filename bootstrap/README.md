@@ -52,3 +52,15 @@ This docker image generates iPXE images for network booting.
 
 Execute `generate.sh` to build the image, clone the iPXE git repo, and build
 the iPXE images in `artifacts/`.
+
+## netboot
+
+This docker compose stack builds a TFTP server to serve the boot images and an
+HTTP server to host the iPXE and Talos resources.
+
+- edit `setup.sh` to configure the version of Talos to fetch
+- edit `config/http/boot.ipxe` to modify the boot sequence
+- edit `config/http/talos/controlplane.yaml` to modify the Talos configuration
+
+Execute `setup.sh` to build the TFTP image, copy the boot images into place,
+download the Talos kernel and initrd, and start the compose stack to serve it.
