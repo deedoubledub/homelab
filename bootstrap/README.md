@@ -1,6 +1,11 @@
 # Bootstrap
 
-Shortcut: execute `bootstrap.sh` and add Talos configuration
+```
+$ # Copy talos controlplane.yaml into data/http
+$ docker compose up -d
+```
+
+## Overview
 
 The infrastructure required to bootstrap the cluster.
 
@@ -8,10 +13,9 @@ The infrastructure required to bootstrap the cluster.
 cluster :arrow_right: [Kubernetes](https://kubernetes.io) cluster.
 
 - pfSense DHCP configuration for PXE booting
-- docker container for building iPXE
-- docker compose configuration for hosting `tftp` and `http` to network boot
+- docker compose stack for building iPXE and serving `tftp` and `http`
 
-## pfSense
+## pfSense Configuration
 
 Services :arrow_right: DHCP Server
 
@@ -45,24 +49,19 @@ Services :arrow_right: DNS Resolver
 | ---- | ----------- | ---------- | --------------- |
 | kube | example.com | 10.0.0.80  | k8s control VIP |
 
-## ipxe_builder
+## TFTP Image
 
-This docker image generates iPXE images for network booting.
+This docker image builds iPXE images for network booting with `tftp/embed.ipxe`
+embedded. The boot images are then copied into a tftp server.
 
-1. edit `scripts/build.sh` to modify the build process
-2. edit `scripts/embed.ipxe` to modify the embedded ipxe script / boot process
+- edit `scripts/embed.ipxe` to modify the embedded ipxe script / boot process
 
-Execute `generate.sh` to build the image, clone the iPXE git repo, and build
-the iPXE images in `artifacts/`.
+## HTTP Image
 
-## netboot
+This docker image builds an nginx http server with the Talos kernel and initrd
+of the specified version. It serves the iPXE boot menu, Talos boot resources,
+and the Talos configuration.
 
-This docker compose stack builds a TFTP server to serve the boot images and an
-HTTP server to host the iPXE and Talos resources.
-
-- edit `setup.sh` to configure the version of Talos to fetch
-- edit `config/http/boot.ipxe` to modify the boot sequence
-- add `config/http/talos/controlplane.yaml` for Talos configuration
-
-Execute `setup.sh` to build the TFTP image, copy the boot images into place,
-download the Talos kernel and initrd, and start the compose stack to serve it.
+- set the Talos version with `TALOS_VERSION` in `compose.yaml`
+- edit `data/http/boot.ipxe` to modify the iPXE boot menu
+- add `data/http/controlplane.yaml` for Talos configuration

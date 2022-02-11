@@ -1,0 +1,21 @@
+---
+services:
+  tftp:
+    build: ./tftp
+    container_name: tftp
+    restart: unless-stopped
+    ports:
+      - 69:69/udp
+
+  http:
+    build:
+      context: ./http
+      args:
+        - TALOS_VERSION=v0.14.1
+    container_name: http
+    restart: unless-stopped
+    ports:
+      - 8888:80
+    volumes:
+      - ./data/http/boot.ipxe:/usr/share/nginx/html/boot.ipxe:ro
+      - ./data/http/controlplane.yaml:/usr/share/nginx/html/talos/controlplane.yaml:ro
