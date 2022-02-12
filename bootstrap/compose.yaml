@@ -1,7 +1,12 @@
 ---
 services:
   tftp:
-    build: ./tftp
+    build:
+      context: ./tftp
+      args:
+        - HTTP_SCHEME=http
+        - HTTP_SERVER=pxe.deedoubledub.com
+        - HTTP_PORT=8888
     container_name: tftp
     restart: unless-stopped
     ports:
