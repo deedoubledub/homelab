@@ -7,9 +7,9 @@ choose --default talos --timeout 3000 target
 goto ${target}
 
 :talos
-set kernel_params talos.config=http://nuc.deedoubledub.com:8888/talos/controlplane.yaml talos.platform=metal init_on_alloc=1 init_on_free=1 slab_nomerge pti=on panic=0
-kernel http://nuc.deedoubledub.com:8888/talos/vmlinuz-amd64 initrd=initramfs-amd64.xz ${kernel_params}
-initrd http://nuc.deedoubledub.com:8888/talos/initramfs-amd64.xz
+set kernel_params talos.config=http://pxe.deedoubledub.com:8888/talos/controlplane.yaml talos.platform=metal init_on_alloc=1 init_on_free=1 slab_nomerge pti=on panic=0
+kernel http://pxe.deedoubledub.com:8888/talos/vmlinuz-amd64 initrd=initramfs-amd64.xz ${kernel_params}
+initrd http://pxe.deedoubledub.com:8888/talos/initramfs-amd64.xz
 echo Booting Talos...
 boot
 
