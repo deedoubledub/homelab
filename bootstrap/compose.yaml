@@ -11,7 +11,7 @@ services:
     build:
       context: ./http
       args:
-        - TALOS_VERSION=v0.14.1
+        - TALOS_VERSION=v0.14.2
     container_name: http
     restart: unless-stopped
     ports:
