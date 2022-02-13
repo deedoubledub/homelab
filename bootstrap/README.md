@@ -54,7 +54,7 @@ Services :arrow_right: DNS Resolver
 This docker image builds iPXE images for network booting with `tftp/embed.ipxe`
 embedded. The boot images are then copied into a tftp server.
 
-- edit `scripts/embed.ipxe` to modify the embedded ipxe script / boot process
+- set `HTTP_SCHEME`, `HTTP_SERVER`, and `HTTP_PORT` in `compose.yaml`
 
 ## HTTP Image
 
@@ -63,5 +63,5 @@ of the specified version. It serves the iPXE boot menu, Talos boot resources,
 and the Talos configuration.
 
 - set the Talos version with `TALOS_VERSION` in `compose.yaml`
-- edit `data/http/boot.ipxe` to modify the iPXE boot menu
+- set `HTTP_SCHEME`, `HTTP_SERVER`, and `HTTP_PORT` in `compose.yaml`
 - add `data/http/controlplane.yaml` for Talos configuration

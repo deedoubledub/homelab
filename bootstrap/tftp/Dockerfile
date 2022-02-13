@@ -6,7 +6,7 @@ COPY embed.ipxe /
 ARG HTTP_SCHEME
 ARG HTTP_SERVER
 ARG HTTP_PORT
-RUN sed -Ei "s/SCHEME/$HTTP_SCHEME/; s/SERVER/$HTTP_SERVER/; s/PORT/$HTTP_PORT/" /embed.ipxe
+RUN sed -i "s/SCHEME/$HTTP_SCHEME/; s/SERVER/$HTTP_SERVER/; s/PORT/$HTTP_PORT/" /embed.ipxe
 # install build dependencies
 RUN apk --no-cache add \
   bash \
