@@ -2,6 +2,9 @@
 
 ```
 $ # Copy talos controlplane.yaml into data/http
+$ cp env.dist .env
+$ # Configure http server path and talos version in .env
+$ # Configure http port in compose.yaml
 $ docker compose up -d
 ```
 
@@ -54,7 +57,7 @@ Services :arrow_right: DNS Resolver
 This docker image builds iPXE images for network booting with `tftp/embed.ipxe`
 embedded. The boot images are then copied into a tftp server.
 
-- set `HTTP_SCHEME`, `HTTP_SERVER`, and `HTTP_PORT` in `compose.yaml`
+- set `HTTP_SCHEME`, `HTTP_SERVER`, and `HTTP_PORT` in `.env`
 
 ## HTTP Image
 
@@ -62,6 +65,7 @@ This docker image builds an nginx http server with the Talos kernel and initrd
 of the specified version. It serves the iPXE boot menu, Talos boot resources,
 and the Talos configuration.
 
-- set the Talos version with `TALOS_VERSION` in `compose.yaml`
-- set `HTTP_SCHEME`, `HTTP_SERVER`, and `HTTP_PORT` in `compose.yaml`
+- set the Talos version with `TALOS_VERSION` in `.env`
+- set `HTTP_SCHEME`, `HTTP_SERVER`, and `HTTP_PORT` in `.env`
 - add `data/http/controlplane.yaml` for Talos configuration
+- set the http port in `compose.yaml`

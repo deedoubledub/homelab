@@ -4,10 +4,11 @@ services:
     build:
       context: ./tftp
       args:
-        - HTTP_SCHEME=http
-        - HTTP_SERVER=pxe.deedoubledub.com
-        - HTTP_PORT=8888
+        - HTTP_SCHEME=$HTTP_SCHEME
+        - HTTP_SERVER=$HTTP_SERVER
+        - HTTP_PORT=$HTTP_PORT
     container_name: tftp
+    env_file: .env
     restart: unless-stopped
     ports:
       - 69:69/udp
@@ -16,11 +17,12 @@ services:
     build:
       context: ./http
       args:
-        - TALOS_VERSION=v0.14.2
-        - HTTP_SCHEME=http
-        - HTTP_SERVER=pxe.deedoubledub.com
-        - HTTP_PORT=8888
+        - TALOS_VERSION=$TALOS_VERSION
+        - HTTP_SCHEME=$HTTP_SCHEME
+        - HTTP_SERVER=$HTTP_SERVER
+        - HTTP_PORT=$HTTP_PORT
     container_name: http
+    env_file: .env
     restart: unless-stopped
     ports:
       - 8888:80
