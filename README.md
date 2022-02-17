@@ -22,3 +22,7 @@ Configure the infrastructure to bootstrap the cluster via network booting.
 - TFTP -- load iPXE
 - iPXE -- net boot from HTTP
 - HTTP -- serve iPXE menus, Talos kernel and initrd, and Talos configuration
+
+### [Base](base)
+
+Configure Argo CD to deploy core services.
