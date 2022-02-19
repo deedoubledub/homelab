@@ -1,6 +1,7 @@
-configInline:
-  address-pools:
-    - name: default
-      protocol: layer2
-      addresses:
-        - 10.0.0.90-10.0.0.99
+metallb:
+  configInline:
+    address-pools:
+      - name: default
+        protocol: layer2
+        addresses:
+          - 10.0.0.90-10.0.0.99
