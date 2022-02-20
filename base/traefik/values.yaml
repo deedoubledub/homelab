@@ -1,0 +1,12 @@
+traefik:
+  ports:
+    traefik:
+      port: 9000
+      expose: false
+      exposedPort: 9000
+      protocol: TCP
+    web:
+      port: 8000
+      expose: true
+      exposedPort: 80
+      protocol: TCP
