@@ -8,11 +8,5 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 # wait for ready
 kubectl -n argocd wait --for=condition=Available --all deployments.apps/argocd-server
 
-# Configure git repos
-kubectl apply -n argocd -f argocd/repositories/homelab.yaml
-
-# Configure applications
-# metallb
-kubectl apply -n argocd -f argocd/applications/metallb.yaml
-# traefik
-kubectl apply -n argocd -f argocd/applications/traefik.yaml
+# Configure argo to manage itself
+kubectl apply -n argocd -f argocd/app-argocd.yaml
