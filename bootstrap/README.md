@@ -69,3 +69,8 @@ and the Talos configuration.
 - set `HTTP_SCHEME`, `HTTP_SERVER`, and `HTTP_PORT` in `.env`
 - add `data/http/controlplane.yaml` for Talos configuration
 - set the http port in `compose.yaml`
+
+## Cluster Init
+
+1. `$ talosctl bootstrap -n 10.0.0.81`
+2. `$ talosctl kubeconfig`
