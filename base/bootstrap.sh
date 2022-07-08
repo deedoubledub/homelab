@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
+ARGO_CD_VERSION=v2.4.4
+
 # Install Argo CD
 kubectl create namespace argocd
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.2/manifests/ha/install.yaml
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/$ARGO_CD_VERSION/manifests/ha/install.yaml
 
 # wait for ready
 kubectl -n argocd wait --for=condition=Available --all deployments.apps/argocd-server
