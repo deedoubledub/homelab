@@ -26,3 +26,11 @@ Configure the infrastructure to bootstrap the cluster via network booting.
 ### [Base](base)
 
 Configure Argo CD to deploy core services.
+
+### Maintenance
+
+#### Talos Upgrade
+
+```
+talosctl upgrade --image ghcr.io/siderolabs/installer:vX.Y.Z -n 10.20.30.40
+```
