@@ -32,5 +32,5 @@ Configure Argo CD to deploy core services.
 #### Talos Upgrade
 
 ```
-talosctl upgrade --image ghcr.io/siderolabs/installer:vX.Y.Z -n 10.20.30.40
+talosctl upgrade --image ghcr.io/siderolabs/installer:vX.Y.Z --wait -n 10.20.30.40
 ```
