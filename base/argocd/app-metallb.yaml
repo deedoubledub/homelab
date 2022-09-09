@@ -8,7 +8,28 @@ spec:
   source:
     repoURL: https://github.com/deedoubledub/homelab.git
     targetRevision: HEAD
-    path: base/metallb
+    path: base/metallb/helm
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: metallb
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: metallb-config
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/deedoubledub/homelab.git
+    targetRevision: HEAD
+    path: base/metallb/manifest
   destination:
     server: https://kubernetes.default.svc
     namespace: metallb
