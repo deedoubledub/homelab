@@ -14,7 +14,15 @@ fi
 
 if ! echo "$GRUB_CHECKSUM  /var/lib/tftpboot/grubx64.efi" | sha256sum -c -; then
   echo "grubx64.efi checksum mismatch -- downloading"
-  curl -sL https://download.rockylinux.org/pub/rocky/8/BaseOS/x86_64/kickstart/EFI/BOOT/grubx64.efi -o /var/lib/tftpboot/grubx64.efi
+  curl -sL http://ftp.us.debian.org/debian/pool/main/g/grub-efi-amd64-signed/grub-efi-amd64-signed_1+2.06+3~deb11u1_amd64.deb -o /tmp/grub-efi-signed.deb
+
+  # extract efi image
+  echo "extracting grubx64.efi"
+  mkdir /tmp/grub
+  ar x /tmp/grub-efi-signed.deb --output=/tmp/grub
+  tar xf /tmp/grub/data.tar.xz -C /tmp/grub
+  mv /tmp/grub/usr/lib/grub/x86_64-efi-signed/grubnetx64.efi.signed /var/lib/tftpboot/grubx64.efi
+  rm -rf /tmp/grub
 
   # verify checksum
   echo "$GRUB_CHECKSUM  /var/lib/tftpboot/grubx64.efi" | sha256sum -c - || { echo "grubx64.efi checksum mismatch -- download failure"; exit 1; }
