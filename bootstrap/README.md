@@ -1,10 +1,8 @@
 # Bootstrap
 
 ```
-$ # Copy talos controlplane.yaml into data/http
-$ cp env.dist .env
-$ # Configure http server path and talos version in .env
-$ # Configure http port in compose.yaml
+$ # Copy talos controlplane.yaml into config/http
+$ # Configure talos version in compose.yaml
 $ docker compose up -d
 ```
 
@@ -16,7 +14,7 @@ The infrastructure required to bootstrap the cluster.
 cluster :arrow_right: [Kubernetes](https://kubernetes.io) cluster.
 
 - pfSense DHCP configuration for PXE booting
-- docker compose stack for building iPXE and serving `tftp` and `http`
+- docker compose stack for `tftp` and `http`
 
 ## pfSense Configuration
 
@@ -30,9 +28,7 @@ TFTP Server: IP address of the TFTP server
 
 Enable: :ballot_box_with_check:\
 Next Server: IP address of the TFTP server\
-Default BIOS file name: `ipxe.kpxe`\
-UEFI 32 bit file name: `ipxe.efi`\
-UEFI 64 bit file name: `ipxe.efi`
+UEFI 64 bit file name: `grubx64.efi`
 
 Add DHCP Static Mappings for each node:
 
@@ -54,21 +50,16 @@ Services :arrow_right: DNS Resolver
 
 ## TFTP Image
 
-This docker image builds iPXE images for network booting with `tftp/embed.ipxe`
-embedded. The boot images are then copied into a tftp server.
+This docker image hosts a tftp server with GRUB and Talos boot resources.
 
-- set `HTTP_SCHEME`, `HTTP_SERVER`, and `HTTP_PORT` in `.env`
+- set the Talos version with `TALOS_VERSION` in `compose.yaml`
+- set the sha256 checksums of the downloaded resources in `compose.yaml`
 
 ## HTTP Image
 
-This docker image builds an nginx http server with the Talos kernel and initrd
-of the specified version. It serves the iPXE boot menu, Talos boot resources,
-and the Talos configuration.
+This docker image hosts an nginx http server with the Talos configuration.
 
-- set the Talos version with `TALOS_VERSION` in `.env`
-- set `HTTP_SCHEME`, `HTTP_SERVER`, and `HTTP_PORT` in `.env`
-- add `data/http/controlplane.yaml` for Talos configuration
-- set the http port in `compose.yaml`
+- add `config/http/controlplane.yaml` for Talos configuration
 
 ## Cluster Init
 
