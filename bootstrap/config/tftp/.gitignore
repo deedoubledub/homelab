@@ -1,0 +1,4 @@
+grub.cfg
+grubx64.efi
+vmlinuz-amd64
+initramfs-amd64.xz

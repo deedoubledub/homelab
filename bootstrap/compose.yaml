@@ -3,28 +3,24 @@ services:
   tftp:
     build:
       context: ./tftp
-      args:
-        - HTTP_SCHEME=$HTTP_SCHEME
-        - HTTP_SERVER=$HTTP_SERVER
-        - HTTP_PORT=$HTTP_PORT
-    container_name: tftp
-    env_file: .env
+    container_name: homelab-tftp
     restart: unless-stopped
+    environment:
+      - TALOS_VERSION=v1.2.1
+      - TALOS_VMLINUZ_CHECKSUM=ee89026cf55c0e86f97b2508be5ba92e0b98c6a9adb020860cc5c936cb8b201e
+      - TALOS_INITRAMFS_CHECKSUM=e06a710aad5efeb26f8110a66c62e51128476f0ef6a9e9d2750be83e1a527940
+      - GRUB_CHECKSUM=bd596e47f7188d90f8f6533abeaca6985d981ff6c767fd4cb446c270af7fe2b1
+      - GRUBCONF_CHECKSUM=c4662d88e291dbab127428b27c74a2b5e6edfeaba56ffd55e8d82f4a2da39a54
     ports:
       - 69:69/udp
+    volumes:
+      - ./config/tftp:/var/lib/tftpboot
 
   http:
-    build:
-      context: ./http
-      args:
-        - TALOS_VERSION=$TALOS_VERSION
-        - HTTP_SCHEME=$HTTP_SCHEME
-        - HTTP_SERVER=$HTTP_SERVER
-        - HTTP_PORT=$HTTP_PORT
-    container_name: http
-    env_file: .env
+    image: nginx:1.23-alpine
+    container_name: homelab-http
     restart: unless-stopped
     ports:
       - 8888:80
     volumes:
-      - ./data/http/controlplane.yaml:/usr/share/nginx/html/talos/controlplane.yaml:ro
+      - ./config/http:/usr/share/nginx/html/talos

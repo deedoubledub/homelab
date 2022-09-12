@@ -1,4 +1,0 @@
-#!ipxe
-
-dhcp
-chain SCHEME://SERVER:PORT/boot.ipxe

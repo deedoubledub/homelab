@@ -18,10 +18,9 @@ A look at the infrastructure from hardware to cluster to hosting services.
 
 Configure the infrastructure to bootstrap the cluster via network booting.
 
-- DHCP -- net boot into iPXE
-- TFTP -- load iPXE
-- iPXE -- net boot from HTTP
-- HTTP -- serve iPXE menus, Talos kernel and initrd, and Talos configuration
+- DHCP -- net boot to TFTP
+- TFTP -- net boot via GRUB with Talos kernel
+- HTTP -- serve Talos configuration
 
 ### [Base](base)
 
