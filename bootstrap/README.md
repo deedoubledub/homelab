@@ -61,6 +61,12 @@ This docker image hosts an nginx http server with the Talos configuration.
 
 - add `config/http/controlplane.yaml` for Talos configuration
 
+## GParted
+
+For GParted Live support extract the GParted Live zip archive and then:
+- copy `live/initrd.img` and `live/vmlinuz` into `config/tftp/gparted`.
+- copy `live/filesystem.squashfs` into `config/http/gparted`
+
 ## Cluster Init
 
 1. `$ talosctl bootstrap -n 10.0.0.81`

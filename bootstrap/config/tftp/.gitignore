@@ -1,4 +1,4 @@
-grub.cfg
 grubx64.efi
-vmlinuz-amd64
-initramfs-amd64.xz
+grub/grub.cfg
+talos/vmlinuz-amd64
+talos/initramfs-amd64.xz

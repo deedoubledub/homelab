@@ -23,4 +23,4 @@ services:
     ports:
       - 8888:80
     volumes:
-      - ./config/http:/usr/share/nginx/html/talos
+      - ./config/http:/usr/share/nginx/html
