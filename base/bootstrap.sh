@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ARGO_CD_VERSION=v2.4.15
+ARGO_CD_VERSION=v2.5.1
 
 # Install Argo CD
 kubectl create namespace argocd
