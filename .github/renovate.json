@@ -4,6 +4,9 @@
     "config:recommended"
   ],
   "assignees": ["deedoubledub"],
+  "argocd": {
+    "fileMatch": ["^base/argocd/.+\\.yaml$"]
+  },
   "customManagers": [
     {
       "customType": "regex",
