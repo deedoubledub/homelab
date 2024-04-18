@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/alex1989hu/kubelet-serving-cert-approver.git
-    targetRevision: v0.8.1
+    targetRevision: v0.8.2
     path: deploy/ha
   destination:
     server: https://kubernetes.default.svc
