@@ -3,5 +3,13 @@
   "extends": [
     "config:recommended"
   ],
-  "assignees": ["deedoubledub"]
+  "assignees": ["deedoubledub"],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["^base/bootstrap.sh$"],
+      "matchStrings": ["# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)?\\sARGO_CD_VERSION=(?<currentValue>.*)\\s"],
+      "versioningTemplate": "semver"
+    }
+  ]
 }

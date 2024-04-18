@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# renovate: datasource=github-releases depName=argoproj/argo-cd
 ARGO_CD_VERSION=v2.10.5
 
 # Install Argo CD
