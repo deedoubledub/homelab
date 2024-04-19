@@ -13,6 +13,12 @@
       "fileMatch": ["^base/bootstrap.sh$"],
       "matchStrings": ["# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)?\\sARGO_CD_VERSION=(?<currentValue>.*)\\s"],
       "versioningTemplate": "semver"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": ["^bootstrap/compose.yaml$"],
+      "matchStrings": ["# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)?\\s- TALOS_VERSION=(?<currentValue>.*)\\s"],
+      "versioningTemplate": "semver"
     }
   ]
 }
