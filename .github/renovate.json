@@ -17,7 +17,7 @@
     {
       "customType": "regex",
       "fileMatch": ["^bootstrap/compose.yaml$"],
-      "matchStrings": ["# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)?\\s- TALOS_VERSION=(?<currentValue>.*)\\s"],
+      "matchStrings": ["# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)?\\s+- TALOS_VERSION=(?<currentValue>.*)\\s"],
       "versioningTemplate": "semver"
     }
   ]
