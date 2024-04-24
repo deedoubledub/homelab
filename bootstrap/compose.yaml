@@ -16,7 +16,7 @@ services:
       - ./config/tftp:/var/lib/tftpboot
 
   http:
-    image: nginx:1.25-alpine
+    image: nginx:1.26-alpine
     container_name: homelab-http
     restart: unless-stopped
     ports:
