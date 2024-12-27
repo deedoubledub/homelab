@@ -7,7 +7,7 @@ services:
     restart: unless-stopped
     environment:
         # renovate: datasource=github-releases depName=siderolabs/talos
-      - TALOS_VERSION=v1.8.4
+      - TALOS_VERSION=v1.9.1
       - GRUB_VERSION=1+2.06+4 #http://ftp.us.debian.org/debian/pool/main/g/grub-efi-amd64-signed/
       - GRUBCONF_CHECKSUM=1dc6e685983cd02f39a2236415cf96b57c01dc5687c750faa65d4c6014e544a9
     ports:
