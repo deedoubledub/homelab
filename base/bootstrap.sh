@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # renovate: datasource=github-releases depName=argoproj/argo-cd
-ARGO_CD_VERSION=v2.14.3
+ARGO_CD_VERSION=v2.14.4
 
 # Install Argo CD
 kubectl create namespace argocd
